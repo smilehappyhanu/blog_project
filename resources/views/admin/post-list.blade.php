@@ -34,6 +34,7 @@
             <div class="container-fluid">
               <div class="row">
                 <div class="col-lg-12">
+                @include('admin.message')
                   <div class="block">
                     <div class="title"><strong>List posts</strong></div>
                     <div class="table-responsive"> 
@@ -65,7 +66,11 @@
                                         <a href="" class="btn btn-success" type="submit">Edit</a>
                                     </td>
                                     <td>
-                                        <a href="" class="btn btn-danger" type="submit">Delete</a>
+                                        <form action="{{route('post.delete',$post->id)}}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <a href="" class="btn btn-danger delete" type="submit">Delete</a>                       
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
@@ -100,5 +105,29 @@
     <script src="{{asset('admin-template/vendor/jquery-validation/jquery.validate.min.js')}}"></script>
     <script src="{{asset('admin-template/js/charts-home.js')}}"></script>
     <script src="{{asset('admin-template/js/front.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+            $(function(){
+                $('.delete').on('click',function(e){
+                    e.preventDefault();
+                    var form = $(this).closest('form');
+                    Swal.fire({
+                        title: "Are you sure?",
+                        text: "You won't be able to revert this!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Yes, delete it!"
+                        }).then(function(result){
+                            if(result) {
+                                form.submit();
+                            }
+                        })
+                })
+            })
+                
+    </script>
   </body>
 </html>
+

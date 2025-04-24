@@ -43,4 +43,15 @@ class AdminController extends Controller
         $posts = Post::latest()->with('user')->paginate(5);
         return view('admin.post-list',compact('posts'));
     }
+
+    public function deletePost($id) {
+        $post = Post::find($id);
+        if($post == null) {
+            session()->flash('error','Record not found.');
+            return redirect()->route('post.list');
+        }
+        $post->delete();
+        session()->flash('success','Post deleted successfully.');
+        return redirect()->route('post.list');
+    }
 }
