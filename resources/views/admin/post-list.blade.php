@@ -63,7 +63,7 @@
                                         <img src="{{asset('uploads/posts/'.$post->image)}}" alt="">
                                     </td>
                                     <td>
-                                        <a href="" class="btn btn-success" type="submit">Edit</a>
+                                        <a href="{{route('post.edit',$post->id)}}" class="btn btn-success" type="submit">Edit</a>
                                     </td>
                                     <td>
                                         <form action="{{route('post.delete',$post->id)}}" method="POST">

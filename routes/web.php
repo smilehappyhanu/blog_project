@@ -22,4 +22,6 @@ Route::get('/',[HomeController::class,'homepage'])->name('homepage');
 Route::get('/post',[AdminController::class,'post'])->name('post');
 Route::post('/add-post',[AdminController::class,'addPost'])->name('post.create');
 Route::get('/list-post',[AdminController::class,'listPost'])->name('post.list');
+Route::get('/edit-post/{id}',[AdminController::class,'editPost'])->name('post.edit');
+Route::put('/handle-update-post/{id}',[AdminController::class,'updatePost'])->name('post.update');
 Route::delete('/delete-post/{id}',[AdminController::class,'deletePost'])->name('post.delete');
