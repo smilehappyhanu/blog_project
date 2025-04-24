@@ -38,4 +38,9 @@ class AdminController extends Controller
         session()->flash('success','Add post successfully.');
         return redirect()->back();
     }
+
+    public function listPost() {
+        $posts = Post::latest()->with('user')->paginate(5);
+        return view('admin.post-list',compact('posts'));
+    }
 }

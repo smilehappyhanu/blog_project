@@ -21,3 +21,4 @@ Route::get('/home',[HomeController::class,'index'])->name('home');
 Route::get('/',[HomeController::class,'homepage'])->name('homepage');
 Route::get('/post',[AdminController::class,'post'])->name('post');
 Route::post('/add-post',[AdminController::class,'addPost'])->name('post.create');
+Route::get('/list-post',[AdminController::class,'listPost'])->name('post.list');

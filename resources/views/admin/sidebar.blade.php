@@ -10,8 +10,8 @@
     <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
     <ul class="list-unstyled">
             <li class="active"><a href="index.html"> <i class="icon-home"></i>Home </a></li>
-            <li><a href="{{route('post')}}"> <i class="icon-grid"></i>Posts </a></li>
-            <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts </a></li>
+            <li><a href="{{route('post')}}"> <i class="icon-grid"></i>Add Posts </a></li>
+            <li><a href="{{route('post.list')}}"> <i class="fa fa-bar-chart"></i>Show Posts </a></li>
             <li><a href="forms.html"> <i class="icon-padnote"></i>Forms </a></li>
             <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Example dropdown </a>
               <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
