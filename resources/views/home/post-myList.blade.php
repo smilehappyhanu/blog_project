@@ -45,7 +45,7 @@
                   <div class="collapse navbar-collapse" id="navbarNav">
                      <ul class="navbar-nav">
                         <li class="nav-item">
-                           <a class="nav-link" href="{{route('homepage')}}">Home</a>
+                           <a class="nav-link" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" href="about.html">About</a>
@@ -67,7 +67,7 @@
                <div class="logo"><a href="index.html"><img src="{{asset('template/images/logo.png')}}"></a></div>
                <div class="menu_main">
                   <ul>
-                     <li class="active"><a href="{{route('homepage')}}">Home</a></li>
+                     <li class="active"><a href="index.html">Home</a></li>
                      <li><a href="about.html">About</a></li>
                      <li><a href="services.html">Services</a></li>
                      <li><a href="blog.html">Blog</a></li>
@@ -79,36 +79,42 @@
       </div>
       <!-- header section end -->
       <!-- about section start -->
-      <div class="contact_section layout_padding">
-        <div class="container">
-            @include('home.message')
-            @include('sweetalert::alert')
-          <h1 class="contact_taital">Add post</h1>
-          <form action="{{route('user.post.store')}}" method="POST" enctype="multipart/form-data" name="addPostForm" id="addPostForm">
-            @csrf
-            <div class="email_text">
-                <div class="form-group">
-                   <input type="text" class="email-bt @error('title') is-invalid @enderror" placeholder="Title" name="title" value="{{old('title')}}">
-                </div>
-                @error('title')
-                <span class="text-danger float-left mb-2">{{$message}}</span>
-                @enderror
-   
-                <div class="form-group">
-                   <textarea class="massage-bt @error('description') is-invalid @enderror" placeholder="Description" rows="5" id="description" name="description">{{old('description')}}</textarea>
-                </div>
-                @error('description')
-                <span class="text-danger float-left mb-2">{{$message}}</span>
-                @enderror
-   
-                <div class="form-group">
-                   <input type="file" name="image" class="email-bt">
-                </div>
-   
-                <button class="send_btn btn btn-primary" type="submit">Register</button>
-             </div>
-          </form>
-        </div>
+      <div class="about_section layout_padding">
+         <div class="container-fluid">
+            @if($posts->isNotEmpty())
+                @foreach($posts as $post)
+                    @if($post->image)
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="about_taital_main">
+                                    <h1 class="about_taital">{{$post->title}}</h1>
+                                    <p class="about_text">{{$post->description}}</p>    
+                                    <div class="readmore_bt"><a href="{{route('post.detail',$post->id)}}">Read more</a></div>                       
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4 padding_right_0">
+                                <div><img src="{{asset('uploads/posts/'.$post->image)}}" class="about_img"></div>
+                            </div>
+                        </div>
+                    @else
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="about_taital_main">
+                                    <h1 class="about_taital">{{$post->title}}</h1>
+                                    <p class="about_text">{{$post->description}}</p>     
+                                    <div class="readmore_bt"><a href="{{route('post.detail',$post->id)}}">Read more</a></div>                       
+                                </div>
+                            </div>
+                            
+                        </div>
+                    @endif                   
+                @endforeach
+            @else
+                <div class="col-md-12">Record not found.</div>
+            @endif
+            <div class="readmore_bt float-right"><a href="{{route('homepage')}}">Back</a></div>
+         </div>
       </div>
       <!-- about section end -->
       <!-- footer section start -->

@@ -9,7 +9,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="{{route('homepage')}}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="about.html">About</a>
@@ -37,6 +37,7 @@
                 @if(Route::has('login'))
                     @auth
                         <li><a href="{{route('user.post.add')}}">Add post</a></li>
+                        <li><a href="{{route('user.post.listMyPost')}}">My post</a></li>
                         <li>
                             <x-app-layout></x-app-layout>
                         </li>

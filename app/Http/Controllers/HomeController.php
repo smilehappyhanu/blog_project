@@ -6,6 +6,8 @@ use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Alert;
+use RealRashid\SweetAlert\Facades\Alert as FacadesAlert;
 
 class HomeController extends Controller
 {
@@ -57,7 +59,13 @@ class HomeController extends Controller
             $post->image = $newImageName;
         }
         $post->save();
-        session()->flash('success','You have create post successfully.');
+        //session()->flash('success','You have create post successfully.');
+        FacadesAlert::success('Congrats','You have create post successfully.');
         return redirect()->route('user.post.add');
+    }
+
+    public function myPost() {
+        $posts = Post::where('user_id',Auth()->user()->id)->get();
+        return view('home.post-myList',compact('posts'));
     }
 }

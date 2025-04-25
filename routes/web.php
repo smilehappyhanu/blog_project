@@ -28,5 +28,6 @@ Route::delete('/delete-post/{id}',[AdminController::class,'deletePost'])->name('
 
 // Route front side
 Route::get('/detail-post/{id}',[HomeController::class,'detailPost'])->name('post.detail');
-Route::get('/user-add-post',[HomeController::class,'userAddPost'])->name('user.post.add');
+Route::get('/user-add-post',[HomeController::class,'userAddPost'])->name('user.post.add')->middleware('auth');
 Route::post('/handle-user-add-post',[HomeController::class,'handleAddPost'])->name('user.post.store');
+Route::get('/my-post',[HomeController::class,'myPost'])->name('user.post.listMyPost');
