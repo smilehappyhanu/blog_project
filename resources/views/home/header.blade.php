@@ -36,6 +36,7 @@
                 <li><a href="blog.html">Blog</a></li>
                 @if(Route::has('login'))
                     @auth
+                        <li><a href="{{route('user.post.add')}}">Add post</a></li>
                         <li>
                             <x-app-layout></x-app-layout>
                         </li>
