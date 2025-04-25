@@ -10,7 +10,7 @@
                   <div><img src="{{asset('uploads/posts/'.$post->image)}}" class="services_img"></div>
                   <h1 style="font-weight: bold;">{{$post->title}}</h1>
                   <p style="color:blue">Auth: {{$post->user->name}}</p>
-                  <div class="btn_main"><a href="">Read more</a></div>
+                  <div class="btn_main"><a href="{{route('post.detail',$post->id)}}">Read more</a></div>
                </div>
             @endforeach
             @endif

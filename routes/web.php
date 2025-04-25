@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
+// Routes admin
 Route::get('/home',[HomeController::class,'index'])->name('home');
 Route::get('/',[HomeController::class,'homepage'])->name('homepage');
 Route::get('/post',[AdminController::class,'post'])->name('post');
@@ -25,3 +25,6 @@ Route::get('/list-post',[AdminController::class,'listPost'])->name('post.list');
 Route::get('/edit-post/{id}',[AdminController::class,'editPost'])->name('post.edit');
 Route::put('/handle-update-post/{id}',[AdminController::class,'updatePost'])->name('post.update');
 Route::delete('/delete-post/{id}',[AdminController::class,'deletePost'])->name('post.delete');
+
+// Route front side
+Route::get('/detail-post/{id}',[HomeController::class,'detailPost'])->name('post.detail');
